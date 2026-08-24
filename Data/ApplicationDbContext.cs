@@ -8,5 +8,13 @@ namespace DeliveryOrderApp.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) {}
 
         public DbSet<Order> Orders { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlite("Data Source=delivery_orders.db");
+            }
+        }
     }
 }
