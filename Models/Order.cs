@@ -3,7 +3,8 @@ using System.ComponentModel.DataAnnotations;
 namespace DeliveryOrderApp.Models
 {
     public class Order
-    {
+    {   
+        [Display(Name = "Номер заказа")]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Город отправителя обязателен")]
