@@ -1,26 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using DeliveryOrderApp.Data;
+using DeliveryOrderApp.Services;
 using DeliveryOrderApp.Models;
 
 namespace DeliveryOrderApp.Controllers
 {
     public class OrdersController : Controller 
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IOrderService _orderService;
 
-        public OrdersController(ApplicationDbContext context)
+        public OrdersController(IOrderService orderService)
         {
-            _context = context;
+            _orderService = orderService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var orders = await _context.Orders
-                .OrderByDescending(order => order.Id)
-                .ToListAsync();
-
-                return View(orders);
+            var orders = await _orderService.GetAllOrdersAsync();
+            return View(orders);
         }
 
         public IActionResult Create() 
@@ -33,9 +29,7 @@ namespace DeliveryOrderApp.Controllers
         {
             if(ModelState.IsValid)
             {
-                _context.Add(order);
-                await _context.SaveChangesAsync();
-
+                await _orderService.CreateOrderAsync(order);
                 return RedirectToAction(nameof(Index));
             }
 
@@ -49,8 +43,7 @@ namespace DeliveryOrderApp.Controllers
                 return NotFound();
             }
 
-            var order = await _context.Orders
-            .FirstOrDefaultAsync(o => o.Id == id);
+            var order = await _orderService.GetOrderByIdAsync(id.Value);
 
             if(order == null)
             {
