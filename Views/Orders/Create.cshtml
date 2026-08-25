@@ -1,0 +1,65 @@
+@model DeliveryOrderApp.Models.Order
+
+@{
+    ViewData["Title"] = "Создать заказ";
+}
+
+<h2>Создать новый заказ</h2>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="SenderCity" class="control-label"></label>
+                <input asp-for="SenderCity" class="form-control" />
+                <span asp-validation-for="SenderCity" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="SenderAdress" class="control-label"></label>
+                <input asp-for="SenderAdress" class="form-control" />
+                <span asp-validation-for="SenderAdress" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="RecipientCity" class="control-label"></label>
+                <input asp-for="RecipientCity" class="form-control" />
+                <span asp-validation-for="RecipientCity" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="RecipientAdress" class="control-label"></label>
+                <input asp-for="RecipientAdress" class="form-control" />
+                <span asp-validation-for="RecipientAdress" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Weight" class="control-label"></label>
+                <input asp-for="Weight" class="form-control" />
+                <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="PickupDate" class="control-label"></label>
+                <input asp-for="PickupDate" class="form-control" type="date" />
+                <span asp-validation-for="PickupDate" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Создать заказ" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Вернуться к списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
