@@ -1,0 +1,34 @@
+@model DeliveryOrderApp.Models.Order
+
+@{
+    ViewData["Title"] = "Детали заказа";
+}
+
+<h2>Детали заказа №@Model.Id</h2>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.SenderCity)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.SenderCity)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.SenderAdress)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.SenderAdress)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.RecipientCity)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.RecipientCity)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.RecipientAdress)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.RecipientAdress)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Weight)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Weight) кг</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.PickupDate)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.PickupDate)</dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Вернуться к списку</a>
+</div>
