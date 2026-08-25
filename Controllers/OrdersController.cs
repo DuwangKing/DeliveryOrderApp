@@ -29,7 +29,7 @@ namespace DeliveryOrderApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create ([Bind("SenderCity,SenderAdress,RecipientAdress,Weight,PickupDate")] Order order)
+        public async Task<IActionResult> Create (Order order)
         {
             if(ModelState.IsValid)
             {
