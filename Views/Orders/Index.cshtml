@@ -1,0 +1,37 @@
+@model IEnumerable<DeliveryOrderApp.Models.Order>
+
+@{
+    ViewData["Title"] = "Список заказов";
+}
+
+<h2>Список заказов</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Создать новый заказ</a>
+</p>
+
+<table class="table table-striped table-hover">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Id)</th>
+            <th>@Html.DisplayNameFor(model => model.SenderCity)</th>
+            <th>@Html.DisplayNameFor(model => model.RecipientCity)</th>
+            <th>@Html.DisplayNameFor(model => model.Weight)</th>
+            <th>@Html.DisplayNameFor(model => model.PickupDate)</th>
+            <th>Действия</th>
+        </tr>
+    <tbody>
+    
+@foreach (var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+            <td>@Html.DisplayFor(modelItem => item.SenderCity)</td>
+            <td>@Html.DisplayFor(modelItem => item.RecipientCity)</td>
+            <td>@Html.DisplayFor(modelItem => item.Weight) кг</td>
+            <td>@Html.DisplayFor(modelItem => item.PickupDate)</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Подробнее</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
