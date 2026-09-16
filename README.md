@@ -20,27 +20,23 @@
 
 - .NET 9.0 SDK
 - Entity Framework Core Tools
-
+- Docker
+- Docker Compose
 
 ## Инструкция
-1. Установить EF Core Tools:
- -bash
-  dotnet tool install --global dotnet-ef
 
-2. Клонируйте репозиторий:
-  git clone https://github.com/DuwangKing/DeliveryOrderApp.git
-  cd DeliveryOrderApp
+**Инструкция:**
 
-3. Восстановите зависимости:
-   dotnet restore
-   
-4. Создайте базу данных:
-   dotnet ef database update
-
-5. Запустите приложение:
-   dotnet run
-
-6. Откройте в браузере: https://localhost:5001/Orders или http://localhost:5000/Orders
+1. Клонируйте репозиторий:
+   ```bash
+   git clone https://github.com/DuwangKing/DeliveryOrderApp.git
+   cd DeliveryOrderApp
+   ```
+2. Запустите контейнер:
+   ```bash
+   docker compose up -d
+   ```
+3. Откройте в браузере: http://localhost:5000/Orders
 
 ## Планы по улучшению
 
@@ -51,4 +47,5 @@
 -Пагинация: Разбиение списка заказов на страницы, чтобы не выгружать все записи из БД сразу
 
 -Слой сервисов: Вынос логики из контроллера в отдельный сервисный слой (IOrderService)(Сделано)
-  
+
+-Docker контейнеризация: Упаковка приложения в Docker контейнер(Сделано)
