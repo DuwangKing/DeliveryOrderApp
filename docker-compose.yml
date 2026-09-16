@@ -1,0 +1,14 @@
+services:
+  deliveryapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    volumes:
+      - sqlite_data:/app/Data
+
+volumes:
+  sqlite_data:
