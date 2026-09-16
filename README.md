@@ -13,7 +13,9 @@
 - SQLite
 - Razor Pages
 - Bootstrap 5
-
+- Docker
+- Docker Compose
+  
 ## Как запустить
 
 ## Требования
