@@ -24,7 +24,7 @@ namespace DeliveryOrderApp.Models
         public string RecipientAdress { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Вес груза обязателен")]
-        [Range(0.1, 100000, ErrorMessage = "Вес должен быть больше 0")]
+        [Range(0.1, 100000, ErrorMessage = "Вес должен быть больше 0 и меньше 100000")]
         [Display(Name = "Вес груза (кг)")]
         public decimal Weight { get; set; }
 
