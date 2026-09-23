@@ -8,14 +8,21 @@ namespace DeliveryOrderApp.Controllers
     {
         private readonly IOrderService _orderService;
 
+        private const int DefaultPageSize = 5;
+        private const int MaxAllowedPageNumber = 1000;
+
         public OrdersController(IOrderService orderService)
         {
             _orderService = orderService;
         }
 
-        public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 5)
+        public async Task<IActionResult> Index(int pageNumber = 1)
         {
-            var orders = await _orderService.GetOrdersPagedAsync(pageNumber, pageSize);
+            if(pageNumber < 1 || pageNumber > MaxAllowedPageNumber)
+            {
+                return BadRequest($"Номер страницы должен быть от 1 до {MaxAllowedPageNumber}");
+            }
+            var orders = await _orderService.GetOrdersPagedAsync(pageNumber, DefaultPageSize);
             return View(orders);
         }
 
