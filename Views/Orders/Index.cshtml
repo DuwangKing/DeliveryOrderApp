@@ -1,4 +1,4 @@
-@model IEnumerable<DeliveryOrderApp.Models.Order>
+@model DeliveryOrderApp.Models.PagedResult<DeliveryOrderApp.Models.Order>
 
 @{
     ViewData["Title"] = "Список заказов";
@@ -12,16 +12,16 @@
 
 <table class="table table-striped table-hover">
         <tr>
-            <th>@Html.DisplayNameFor(model => model.Id)</th>
-            <th>@Html.DisplayNameFor(model => model.SenderCity)</th>
-            <th>@Html.DisplayNameFor(model => model.RecipientCity)</th>
-            <th>@Html.DisplayNameFor(model => model.Weight)</th>
-            <th>@Html.DisplayNameFor(model => model.PickupDate)</th>
+            <th>Номер заказа</th>
+            <th>Город отправителя</th>
+            <th>Город получателя</th>
+            <th>Вес (кг)</th>
+            <th>Дата забора</th>
             <th>Действия</th>
         </tr>
     <tbody>
     
-@foreach (var item in Model) {
+@foreach (var item in Model.Items) {
         <tr>
             <td>@Html.DisplayFor(modelItem => item.Id)</td>
             <td>@Html.DisplayFor(modelItem => item.SenderCity)</td>
@@ -35,3 +35,19 @@
 }
     </tbody>
 </table>
+
+<nav>
+    <ul class="pagination justify-content-center">
+        <li class="page-item @(Model.HasPreviousPage ? "" : "disabled")">
+            <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.CurrentPage - 1)">Назад</a>
+        </li>
+        
+        <li class="page-item disabled">
+            <span class="page-link">Страница @Model.CurrentPage из @Model.TotalPages</span>
+        </li>
+        
+        <li class="page-item @(Model.HasNextPage ? "" : "disabled")">
+            <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.CurrentPage + 1)">Вперед</a>
+        </li>
+    </ul>
+</nav>
