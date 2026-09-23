@@ -13,9 +13,9 @@ namespace DeliveryOrderApp.Controllers
             _orderService = orderService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 5)
         {
-            var orders = await _orderService.GetAllOrdersAsync();
+            var orders = await _orderService.GetOrdersPagedAsync(pageNumber, pageSize);
             return View(orders);
         }
 
