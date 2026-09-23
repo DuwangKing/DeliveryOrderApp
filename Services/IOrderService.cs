@@ -7,5 +7,7 @@ namespace DeliveryOrderApp.Services
         Task<List<Order>> GetAllOrdersAsync();
         Task<Order?> GetOrderByIdAsync(int id);
         Task CreateOrderAsync(Order order);
+
+        Task<PagedResult<Order>> GetOrdersPagedAsync(int pageNumber, int pageSize);
     }
 }

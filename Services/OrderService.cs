@@ -30,5 +30,25 @@ namespace DeliveryOrderApp.Services
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<PagedResult<Order>> GetOrdersPagedAsync(int pageNumber, int pageSize)
+        {
+            var totalCount = await _context.Orders.CountAsync();
+
+            var orders = await _context.Orders
+            .OrderByDescending(o => o.Id)
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .ToListAsync();
+
+            var result = new PagedResult<Order>();
+
+            result.Items = orders;
+            result.CurrentPage = pageNumber;
+            result.PageSize = pageSize;
+            result.TotalCount = totalCount;
+
+            return result;
+        }
     }
 }
