@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using DeliveryOrderApp.Services;
 using DeliveryOrderApp.Models;
+using DeliveryOrderApp.DTOs;
 
 namespace DeliveryOrderApp.Controllers
 {
@@ -32,15 +33,15 @@ namespace DeliveryOrderApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create (Order order)
+        public async Task<IActionResult> Create (CreateOrderDto orderDto)
         {
             if(ModelState.IsValid)
             {
-                await _orderService.CreateOrderAsync(order);
+                await _orderService.CreateOrderAsync(orderDto);
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(order);
+            return View(orderDto);
         }
 
         public async Task<IActionResult> Details(int? id)

@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using DeliveryOrderApp.Data;
 using DeliveryOrderApp.Models;
+using DeliveryOrderApp.DTOs;
 
 namespace DeliveryOrderApp.Services
 {
@@ -25,8 +26,17 @@ namespace DeliveryOrderApp.Services
             return await _context.Orders.FindAsync(id);
         }
 
-        public async Task CreateOrderAsync(Order order)
+        public async Task CreateOrderAsync(CreateOrderDto orderDto)
         {
+            var order = new Order
+            {
+                SenderCity = orderDto.SenderCity,
+                SenderAdress = orderDto.SenderAdress,
+                RecipientCity = orderDto.RecipientCity,
+                RecipientAdress = orderDto.RecipientAdress,
+                Weight = orderDto.Weight,
+                PickupDate = orderDto.PickupDate
+            };
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
         }

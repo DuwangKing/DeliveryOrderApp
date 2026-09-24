@@ -1,4 +1,5 @@
 using DeliveryOrderApp.Models;
+using DeliveryOrderApp.DTOs;
 
 namespace DeliveryOrderApp.Services
 {
@@ -6,7 +7,7 @@ namespace DeliveryOrderApp.Services
     {
         Task<List<Order>> GetAllOrdersAsync();
         Task<Order?> GetOrderByIdAsync(int id);
-        Task CreateOrderAsync(Order order);
+        Task CreateOrderAsync(CreateOrderDto orderDto);
 
         Task<PagedResult<Order>> GetOrdersPagedAsync(int pageNumber, int pageSize);
     }
