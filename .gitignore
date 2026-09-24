@@ -486,3 +486,6 @@ $RECYCLE.BIN/
 *-journal
 *.sqlite
 *.sqlite3
+
+# Environment variables
+.env

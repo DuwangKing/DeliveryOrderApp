@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -15,14 +16,14 @@ namespace DeliveryOrderApp.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    SenderCity = table.Column<string>(type: "TEXT", nullable: false),
-                    SenderAdress = table.Column<string>(type: "TEXT", nullable: false),
-                    RecipientCity = table.Column<string>(type: "TEXT", nullable: false),
-                    RecipientAdress = table.Column<string>(type: "TEXT", nullable: false),
-                    Weight = table.Column<decimal>(type: "TEXT", nullable: false),
-                    PickupDate = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    SenderCity = table.Column<string>(type: "text", nullable: false),
+                    SenderAdress = table.Column<string>(type: "text", nullable: false),
+                    RecipientCity = table.Column<string>(type: "text", nullable: false),
+                    RecipientAdress = table.Column<string>(type: "text", nullable: false),
+                    Weight = table.Column<decimal>(type: "numeric", nullable: false),
+                    PickupDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
