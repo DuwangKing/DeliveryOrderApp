@@ -10,7 +10,7 @@
 
 - ASP.NET Core 9.0 (MVC)
 - Entity Framework Core 9.0
-- SQLite
+- PostgreSQL
 - Razor Pages
 - Bootstrap 5
 - Docker
@@ -35,11 +35,13 @@
    cd DeliveryOrderApp
    ```
 2. Создайте файл .env в корне проекта и заполните его переменными окружения:
-   POSTGRES_USER=app
-   POSTGRES_PASSWORD=secret
-   POSTGRES_DB=deliverydb
-   DB_HOST=postgres
-   DB_PORT=5432
+
+     -POSTGRES_USER=app
+     -POSTGRES_PASSWORD=secret
+     -POSTGRES_DB=deliverydb
+     -DB_HOST=postgres
+     -DB_PORT=5432
+   
    Примечание: это тестовые данные. .env файл был добавлен в .gitignore ради безопасности
    
 3. Соберите и запустите контейнеры:
