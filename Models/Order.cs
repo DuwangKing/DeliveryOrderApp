@@ -31,6 +31,6 @@ namespace DeliveryOrderApp.Models
         [Required(ErrorMessage = "Дата забора груза обязательна")]
         [DataType(DataType.Date)]
         [Display(Name = "Дата забора груза")]
-        public DateTime PickupDate { get; set; }
+        public DateOnly PickupDate { get; set; }
     }
 }
