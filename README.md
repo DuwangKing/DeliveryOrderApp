@@ -34,13 +34,7 @@
    git clone https://github.com/DuwangKing/DeliveryOrderApp.git
    cd DeliveryOrderApp
    ```
-2. Создайте файл .env в корне проекта и заполните его переменными окружения:
-
-     -POSTGRES_USER=app
-     -POSTGRES_PASSWORD=secret
-     -POSTGRES_DB=deliverydb
-     -DB_HOST=postgres
-     -DB_PORT=5432
+2. Создайте файл .env в корне проекта и заполните его переменными окружения(Пример можно увидеть в файле .env.example в корне проекта)
    
    Примечание: это тестовые данные. .env файл был добавлен в .gitignore ради безопасности
    
