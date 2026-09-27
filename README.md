@@ -1,5 +1,5 @@
 # DeliveryOrderApp
-
+[![.NET CI Pipeline](https://github.com/DuwangKing/DeliveryOrderApp/actions/workflows/ci.yml/badge.svg)](https://github.com/DuwangKing/DeliveryOrderApp/actions/workflows/ci.yml)
 Веб-приложение для управления заказами на доставку.
 
 ## Описание
@@ -15,6 +15,7 @@
 - Bootstrap 5
 - Docker
 - Docker Compose
+- GitHub Actions (CI): автоматизация сборки, прогона юнит-тестов и валидации Docker-образа.
   
 ## Как запустить
 
@@ -32,7 +33,7 @@
 1. Клонируйте репозиторий:
    ```bash
    git clone https://github.com/DuwangKing/DeliveryOrderApp.git
-   cd src/DeliveryOrderApp
+   cd DeliveryOrderApp
    ```
 2. Создайте файл .env в корне проекта и заполните его переменными окружения(Пример можно увидеть в файле .env.example в корне проекта)
    
