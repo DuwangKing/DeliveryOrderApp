@@ -85,5 +85,16 @@ namespace DeliveryOrderApp.Tests
             Assert.NotNull(result);
             Assert.Equal("Астрахань", result.SenderCity);
         }
+
+        [Fact]
+        public async Task GetOrderByIdAsync_NonExistingId_ReturnsNull()
+        {
+            var context = GetInMemoryDbContext();
+            var service = new OrderService(context);
+
+            var result = await service.GetOrderByIdAsync(999);
+
+            Assert.Null(result);
+        }
     }
 }
