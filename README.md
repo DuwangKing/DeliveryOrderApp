@@ -1,5 +1,6 @@
 # DeliveryOrderApp
 [![.NET CI Pipeline](https://github.com/DuwangKing/DeliveryOrderApp/actions/workflows/ci.yml/badge.svg)](https://github.com/DuwangKing/DeliveryOrderApp/actions/workflows/ci.yml)
+
 Веб-приложение для управления заказами на доставку.
 
 ## Описание
