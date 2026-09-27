@@ -62,5 +62,28 @@ namespace DeliveryOrderApp.Tests
             Assert.Equal(2, result.Items.Count);
             Assert.Equal(1, result.CurrentPage);
         }
+
+        [Fact]
+        public async Task GetOrderByIdAsync_ExistingId_ReturnsOrder()
+        {
+            var context = GetInMemoryDbContext();
+            var order = new Order
+            {
+                SenderCity = "Астрахань",
+                SenderAdress = "ул. Ленина 1",
+                RecipientCity = "Казань",
+                RecipientAdress = "ул. Тимме 2",
+                Weight = 10.5m,
+                PickupDate = DateOnly.FromDateTime(DateTime.Now.AddDays(1))
+            };
+            context.Orders.Add(order);
+            await context.SaveChangesAsync();
+
+            var service = new OrderService(context);
+            var result = await service.GetOrderByIdAsync(order.Id);
+
+            Assert.NotNull(result);
+            Assert.Equal("Астрахань", result.SenderCity);
+        }
     }
 }
